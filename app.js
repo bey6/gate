@@ -8,6 +8,9 @@ const logger = require('koa-logger')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+const mapping = require('./routes/mapping')
+const document = require('./routes/document')
+
 const proxy = require('./routes/proxy')
 
 // error handler
@@ -38,8 +41,11 @@ app.use(async (ctx, next) => {
 })
 
 // 本地路由
-app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+app.use(index.routes())
+app.use(users.routes())
+app.use(mapping.routes())
+app.use(document.routes())
+
 // 代理请求
 app.use(proxy)
 

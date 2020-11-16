@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    section
+        table(class='table table-sm table-hover table-striped')
+            thead
+                tr
+                    th(scope='col') #
+                    th(scope='col') TargetOrigin
+                    th(scope='col') TargetAction
+                    th(scope='col') TargetVersion
+            tbody
+                tr
+                    th(scope='row') 1
+                    td http://xhdev.docimaxvip.com:8090
+                    td /api/Dictionary/DoctorList
+                    td v1
+                tr(class='bg-danger')
+                    th(scope='row') 1
+                    td http://xhdev.docimaxvip.com:8090
+                    td /api/Dictionary/DoctorList
+                    td v1
+                tr
+                    th(scope='row') 1
+                    td http://xhdev.docimaxvip.com:8090
+                    td /api/Dictionary/DoctorList
+                    td v1
