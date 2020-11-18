@@ -1,4 +1,4 @@
-# gate
+# torii
 
 A proxy of backend services.
 
