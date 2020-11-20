@@ -1,27 +1,45 @@
 extends layout
 
 block content
+    #dialog.modal.fade(role='dialog')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5.modal-title Modal title
+                .modal-body
+                    form#formTarget(action='/mapping/target' method='post')
+                        .form-group
+                            label(for='target_origin') Target origin
+                            input#target_origin.form-control(type='text' name='origin')
+                            smal.form-text.text-muted We'll never share your email with anyone
+                        .form-group
+                            label(for='target_action') Target action
+                            input#target_action.form-control(type='text' name='action')
+                        .form-group
+                            label(for='target_version') Target version
+                            input#target_version.form-control(type='text' name='version')
+                .modal-footer
+                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                    button#btnSave.btn.btn-primary(type='button') Save
     section
-        table(class='table table-sm table-hover table-striped')
+        div(style='text-align:right;padding:4px')
+            button.btn.btn-warning.btn-sm(type='button' data-toggle='modal' data-target='#dialog')
+                svg(width="19px" height="19px" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg")
+                    path(fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z")
+                span New
+        table.table.table-sm.table-striped.table-hover
             thead
                 tr
                     th(scope='col') #
-                    th(scope='col') TargetOrigin
-                    th(scope='col') TargetAction
-                    th(scope='col') TargetVersion
-            tbody
+                    th(scope='col') origin
+                    th(scope='col') action
+                    th(scope='col') version
+            each item in list
                 tr
-                    th(scope='row') 1
-                    td http://xhdev.docimaxvip.com:8090
-                    td /api/Dictionary/DoctorList
-                    td v1
-                tr(class='bg-danger')
-                    th(scope='row') 1
-                    td http://xhdev.docimaxvip.com:8090
-                    td /api/Dictionary/DoctorList
-                    td v1
-                tr
-                    th(scope='row') 1
-                    td http://xhdev.docimaxvip.com:8090
-                    td /api/Dictionary/DoctorList
-                    td v1
+                    th(scope='row')= item.key
+                    td= item.targetOrigin
+                    td= item.targetAction
+                    td
+                        span.badge.badge-warning= item.targetVersion
+    
+    script(src='/javascripts/mapping/index.js' defer='defer')
