@@ -1,25 +1,44 @@
 const axios = require('axios')
+const db = require('../db/nedb')
 
-const json = {
-  trace: {
-    v1: 'http://xhdev.docimaxvip.com:6627/api/values/',
-    v2:
-      'http://xhdev.docimaxvip.com:6627/api/values/GetStorageManageList?type=2',
-  },
-  quality: {
-    v1: 'http://xhdev.docimaxvip.com:8090/api/Quality/',
-    v2:
-      'http://xhdev.docimaxvip.com:8090/api/Quality/GetQualityPatientList?userid=&QualityStatus=0,1&Mrid=&PatientName=&MRType=1&DepartCode=&pageIndex=1&pageSize=20',
-  },
+function responseFormatter(response) {
+  const codes = ['code', 'Code'],
+    msgs = ['msg', 'Msg'],
+    datas = ['data', 'ResponseContent', 'responseContent']
+  res = { code: '', msg: '', data: '' }
+  for (const c of codes) {
+    if (response[c]) {
+      res.code = response[c]
+      break
+    }
+  }
+  for (const m of msgs) {
+    if (response[m]) {
+      res.msg = response[m]
+      break
+    }
+  }
+  for (const d of datas) {
+    if (response[d]) {
+      res.data = response[d]
+      break
+    }
+  }
+  if (!res.code && !res.msg && !res.data) {
+    res.code = '200'
+    res.data = response
+  }
+  return res
 }
 
 module.exports = async (ctx, next) => {
   let path_part = ctx.path.slice(1).split('/')
-  const url =
-    json[path_part[0]][path_part[1]] + path_part[2] + '?' + ctx.querystring
+  let targetProxy = await db.query({ alias: path_part[0] })
+  path_part[0] = targetProxy.origin
+  let url = path_part.join('/')
   const res = await axios.get(url)
   if (res.status === 200) {
-    ctx.body = res.data
+    ctx.body = responseFormatter(res.data)
   } else {
     ctx.body = {
       code: res.status,

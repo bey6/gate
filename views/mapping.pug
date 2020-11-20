@@ -9,12 +9,15 @@ block content
                 .modal-body
                     form#formTarget(action='/mapping/target' method='post')
                         .form-group
+                            label(for='target_alias') Target Alias
+                            input#target_alias.form-control(type='text' name='alias')
+                        .form-group
                             label(for='target_origin') Target origin
                             input#target_origin.form-control(type='text' name='origin')
-                            smal.form-text.text-muted We'll never share your email with anyone
-                        .form-group
-                            label(for='target_action') Target action
-                            input#target_action.form-control(type='text' name='action')
+                            //- smal.form-text.text-muted We'll never share your email with anyone
+                        //- .form-group
+                        //-     label(for='target_action') Target action
+                        //-     input#target_action.form-control(type='text' name='action')
                         .form-group
                             label(for='target_version') Target version
                             input#target_version.form-control(type='text' name='version')
@@ -30,16 +33,18 @@ block content
         table.table.table-sm.table-striped.table-hover
             thead
                 tr
-                    th(scope='col') #
+                    th(scope='col') 
+                    th(scope='col') alias
                     th(scope='col') origin
-                    th(scope='col') action
+                    //- th(scope='col') action
                     th(scope='col') version
             each item in list
                 tr
                     th(scope='row')= item.key
-                    td= item.targetOrigin
-                    td= item.targetAction
+                    td= item.alias
+                    td= item.origin
+                    //- td= item.action
                     td
-                        span.badge.badge-warning= item.targetVersion
+                        span.badge.badge-warning= item.version
     
     script(src='/javascripts/mapping/index.js' defer='defer')

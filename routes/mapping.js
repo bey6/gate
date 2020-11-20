@@ -5,14 +5,15 @@ router.prefix('/mapping')
 
 router.post('/target', async (ctx, next) => {
   try {
-    if (!ctx.request.body.origin) ctx.body = 'Origin 不可为空！'
-    else if (!ctx.request.body.action) ctx.body = 'Action 不可为空！'
-    else if (!ctx.request.body.version) ctx.body = 'Version 不可为空！'
+    if (!ctx.request.body.alias) ctx.body = 'Origin cannot be alias'
+    else if (!ctx.request.body.origin) ctx.body = 'Origin cannot be empty'
+    else if (!ctx.request.body.version) ctx.body = 'Version cannot be empty'
     else {
       let res = await db.insert({
-        targetOrigin: ctx.request.body.origin,
-        targetAction: ctx.request.body.action,
-        targetVersion: ctx.request.body.version,
+        alias: ctx.request.body.alias,
+        origin: ctx.request.body.origin,
+        // action: ctx.request.body.action,
+        version: ctx.request.body.version,
       })
       ctx.redirect('/mapping')
     }
@@ -23,7 +24,7 @@ router.post('/target', async (ctx, next) => {
 
 router.get('/', async (ctx, next) => {
   try {
-    let res = await db.query()
+    let res = await db.queryAll()
     await ctx.render('mapping', {
       title: 'mapping',
       list: res.map((r, idx) => ({ ...r, key: idx + 1 })),
