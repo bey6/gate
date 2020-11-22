@@ -5,7 +5,7 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    script(src='/javascripts/jquery.slim.min.js' defer='defer')
+    script(src='/javascripts/jquery.min.js' defer='defer')
     script(src='/javascripts/popper.min.js' defer='defer')
     script(src='/javascripts/bootstrap.min.js' defer='defer')
     block head
@@ -13,29 +13,28 @@ html
   body
     nav(class='navbar navbar-expand-lg navbar-light bg-light')
       a(class="navbar-brand" href="/")
-        img(src="images/torii-torii.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy")
+        img(src="/images/torii-torii.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy")
         Torii
       a(class='navbar-brand' href='/') Torii
       button(class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
         span(class='navbar-toggler-icon')
       div(class='collapse navbar-collapse' id='navbarSupportedContent')
         ul(class='navbar-nav mr-auto')
-          li(class='nav-item active')
-            a(class='nav-link' href='/document') Document
-          li(class='nav-item')
-            a(class='nav-link' href='/mapping') Mapping
-          li(class='nav-item dropdown')
-            a(class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') Dropdown
-
+          li.nav-item(class='active')
+            a(class='nav-link' href='/document') 文档
+          li.nav-item(class='')
+            a(class='nav-link' href='/mapping') 映射
+          li.nav-item.dropdown(class='')
+            a(class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') 案例
             div(class='dropdown-menu' aria-labelledby='navbarDropdown')
-              a(class='dropdown-item' href='#') Action
+              a(class='dropdown-item' href='/examples/baidu') 百度
               a(class='dropdown-item' href='#') Another action
               div(class='dropdown-divider')
               a(class='dropdown-item' href='#') Something else here
-          li(class='nav-item')
-            a(class='nav-link disabled' href='#' tabindex='-1' aria-disabled='true') Disabled
-        form(class='form-inline my-2 my-lg-0')
-          input(class='form-control mr-sm-2' type='search' placeholder='Search' aria-label='Search')
-          button(class='btn btn-outline-success my-2 my-sm-0' type='submit') Search
+          //- li.nav-item(class='')
+          //-   a(class='nav-link disabled' href='#' tabindex='-1' aria-disabled='true') Disabled
+        //- form(class='form-inline my-2 my-lg-0')
+        //-   input(class='form-control mr-sm-2' type='search' placeholder='Search' aria-label='Search')
+        //-   button(class='btn btn-outline-success my-2 my-sm-0' type='submit') Search
 
     block content

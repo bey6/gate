@@ -10,6 +10,7 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 const mapping = require('./routes/mapping')
 const document = require('./routes/document')
+const example = require('./routes/example')
 
 const proxy = require('./routes/proxy')
 
@@ -45,7 +46,7 @@ app.use(index.routes())
 app.use(users.routes())
 app.use(mapping.routes())
 app.use(document.routes())
-
+app.use(example.routes())
 // 代理请求
 app.use(proxy)
 

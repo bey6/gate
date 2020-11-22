@@ -1,6 +1,10 @@
 const axios = require('axios')
 const db = require('../db/nedb')
 
+/**
+ * responseFormatter formate the response body to {code,msg,data}
+ * @param {obj} response The body of the response body.
+ */
 function responseFormatter(response) {
   const codes = ['code', 'Code'],
     msgs = ['msg', 'Msg'],
@@ -34,15 +38,32 @@ function responseFormatter(response) {
 module.exports = async (ctx, next) => {
   let path_part = ctx.path.slice(1).split('/')
   let targetProxy = await db.query({ alias: path_part[0] })
-  path_part[0] = targetProxy.origin
-  let url = path_part.join('/')
-  const res = await axios.get(url)
-  if (res.status === 200) {
-    ctx.body = responseFormatter(res.data)
-  } else {
-    ctx.body = {
-      code: res.status,
-      msg: res.message,
+  if (!targetProxy) next()
+  else {
+    // 替换请求源
+    path_part[0] = targetProxy.origin
+
+    let method = ctx.method.toLowerCase(),
+      headers = ctx.headers,
+      body = ctx.body,
+      url = path_part.join('/'),
+      qs = ctx.querystring
+
+    // 对接 url 参数
+    if (qs) url += `?${qs}`
+    try {
+      const res = await axios[method](url, body)
+      if (res.status === 200) {
+        console.log(res)
+        ctx.body = responseFormatter(res.data)
+      } else {
+        ctx.body = {
+          code: res.status,
+          msg: res.message,
+        }
+      }
+    } catch (error) {
+      ctx.body = error
     }
   }
 }

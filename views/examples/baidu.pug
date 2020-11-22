@@ -1,0 +1,13 @@
+extends ../layout
+
+block head
+    link(rel="stylesheet", href="/stylesheets/example.css")
+    script(src='/javascripts/example/baidu.js' defer='defer')
+
+block content
+    .row(style='margin:0;padding: 12px 0')
+        .col-sm-8
+            input#kw.form-control(type='text' placeholder='输入搜索关键字')
+        .col-sm-4
+            button#rq.btn.btn-primary(type='button') 请求图片
+    ul#imglist
