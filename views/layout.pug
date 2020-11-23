@@ -22,10 +22,14 @@ html
         ul(class='navbar-nav mr-auto')
           li.nav-item(class=active==='mapping'?'active': '')
             a(class='nav-link' href='/mapping') 映射
+          li.nav-item(class=active==='plan'?'active': '')
+            a(class='nav-link' href='/plan') 计划
           li.nav-item(class=active==='document'?'active': '')
             a(class='nav-link' href='/document') 文档
           li.nav-item(class=active==='log'?'active': '')
             a(class='nav-link' href='/log') 日志
+          li.nav-item(class=active==='editor'?'active': '')
+            a(class='nav-link' href='/editor') 在线编辑
           li.nav-item.dropdown(class=active.includes('baidu')?'active':'')
             a(class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') 案例
             div(class='dropdown-menu' aria-labelledby='navbarDropdown')
