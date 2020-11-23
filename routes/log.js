@@ -10,6 +10,7 @@ router.get('/', async (ctx, next) => {
   let html = converter.makeHtml(data.toString())
   await ctx.render('log', {
     title: 'log',
+    active: 'log',
     article: html,
   })
 })

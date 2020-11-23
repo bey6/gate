@@ -27,6 +27,7 @@ router.get('/', async (ctx, next) => {
     let res = await db.queryAll()
     await ctx.render('mapping', {
       title: 'mapping',
+      active: 'mapping',
       list: res.map((r, idx) => ({ ...r, key: idx + 1 })),
     })
   } catch (error) {
