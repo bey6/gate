@@ -4,7 +4,11 @@ block head
     link(rel='stylesheet' href='/stylesheets/document.css')
     link(rel='stylesheet' href='/stylesheets/default.min.css')
     script(src='/javascripts/highlight.min.js' defer='defer')
-    script(scr='/javascripts/document/index.js' defer='defer')
+    script(src='/javascripts/document/index.js' defer='defer')
 
 block content
-    article !{article}
+    section(style='display:flex')
+        section#outline
+            h3 目录
+            ol#outline__root
+        article !{article}

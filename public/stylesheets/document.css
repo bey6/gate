@@ -1,5 +1,26 @@
-article {
+#outline {
+  position: absolute;
   padding: 12px;
+  margin: 0;
+  top: 68px;
+  left: 12px;
+  width: 256px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  background-color: rgb(248, 249, 250);
+}
+#outline ol {
+  margin: 0;
+  padding: 12px;
+  list-style: none;
+}
+article {
+  padding: 12px 64px;
+  margin: 0 0 0 280px;
+  flex: 1;
+  height: calc(100vh - 56px);
+  overflow: auto;
+  border-left: 1px solid #ddd;
 }
 
 h1 {
