@@ -8,7 +8,7 @@ html
     script(src='/javascripts/jquery.min.js' defer='defer')
     script(src='/javascripts/popper.min.js' defer='defer')
     script(src='/javascripts/bootstrap.min.js' defer='defer')
-    block head
+    block assets
 
   body
     nav(class='navbar navbar-expand-lg navbar-light bg-light')
@@ -30,7 +30,7 @@ html
             a(class='nav-link' href='/log') 日志
           li.nav-item(class=active==='editor'?'active': '')
             a(class='nav-link' href='/editor') 在线编辑
-          li.nav-item.dropdown(class=active.includes('baidu')?'active':'')
+          li.nav-item.dropdown(class=active==='more'?'active':'')
             a(class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') 案例
             div(class='dropdown-menu' aria-labelledby='navbarDropdown')
               a(class='dropdown-item' href='/examples/baidu') 百度
