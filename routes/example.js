@@ -5,7 +5,7 @@ router.prefix('/examples')
 router.get('/baidu', async (ctx, next) => {
   await ctx.render('examples/baidu.pug', {
     title: '百度图片',
-    active: 'baidu',
+    active: 'more',
   })
 })
 
