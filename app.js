@@ -12,7 +12,8 @@ const mapping = require('./routes/mapping')
 const document = require('./routes/document')
 const log = require('./routes/log')
 const example = require('./routes/example')
-const plan = require('./routes/plan')
+const issue = require('./routes/issue')
+const editor = require('./routes/editor')
 
 const proxy = require('./routes/proxy')
 
@@ -50,7 +51,9 @@ app.use(mapping.routes())
 app.use(document.routes())
 app.use(log.routes())
 app.use(example.routes())
-app.use(plan.routes())
+app.use(issue.routes())
+app.use(editor.routes())
+
 // 代理请求
 app.use(proxy)
 

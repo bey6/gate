@@ -1,12 +1,12 @@
 const router = require('koa-router')()
 
-router.prefix('/plan')
+router.prefix('/issue')
 
 router.get('/', async (ctx, next) => {
-  await ctx.render('plan/index.pug', {
+  await ctx.render('issue/index.pug', {
     title: '计划',
-    active: 'plan',
-    plans: [
+    active: 'issue',
+    issues: [
       {
         key: 0,
         desc: '支持从配置服务读取默认的映射信息',
