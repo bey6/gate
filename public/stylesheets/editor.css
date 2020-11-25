@@ -1,0 +1,28 @@
+#file-list > li {
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+#file-list > li:hover {
+    box-shadow: 0 0 0 1px rgba(69, 139, 230, 0.432);
+}
+.md-preview {
+    display: block;
+    height: 230px;
+    border: 1px solid #ddd;
+}
+.md-preview h4 {
+    margin: 0;
+    text-align: center;
+    font-size: 20px;
+    line-height: 48px;
+    border-top: 1px solid #ddd;
+}
+.md-preview pre {
+    margin: 0;
+    padding: 20px;
+    font-size: 5px;
+    height: 180px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    background-color: #f1f1f1;
+}
