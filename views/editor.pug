@@ -7,10 +7,11 @@ block assets
     script(src='/javascripts/editor.js' defer='defer')
 
 block content
-    ul#file-list(style='float:left;width:208px;padding:12px;list-style:none')
+    ul#file-list
         each md in mds
             li
                 div.md-preview
                     pre=md.content
                     h4=md.title
-    textarea#view-area(style='float:left;width:80%')
+    article
+        textarea#view-area
