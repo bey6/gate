@@ -4,6 +4,7 @@ block assets
     link(rel='stylesheet' href='/stylesheets/simplemde.min.css')
     link(rel="stylesheet", href="/stylesheets/editor.css")
     script(src='/javascripts/simplemde.min.js' defer='defer')
+    script(src='/javascripts/lodash.js' defer='defer')
     script(src='/javascripts/editor.js' defer='defer')
 
 block content
@@ -11,7 +12,7 @@ block content
         each md in mds
             li
                 div.md-preview
-                    pre=md.content
+                    pre(data-article-name=md.filename)=md.content
                     h4=md.title
     article
         textarea#view-area
