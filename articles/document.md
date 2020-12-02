@@ -28,4 +28,5 @@ func foo(num int32) int32 {
   return num * num
 }
 ```
-aa
+
+你好世界
