@@ -1,67 +1,64 @@
 const Koa = require('koa')
+const Router = require('koa-router')
 const app = new Koa()
+const router = new Router()
+
 const views = require('koa-views')
+const co = require('co')
+const convert = require('koa-convert')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const debug = require('debug')('koa2:server')
+const path = require('path')
 
-const index = require('./routes/index')
-const users = require('./routes/users')
-const mapping = require('./routes/mapping')
-const document = require('./routes/document')
-const jam = require('./routes/jam')
-const log = require('./routes/log')
-const example = require('./routes/example')
-const issue = require('./routes/issue')
-const editor = require('./routes/editor')
+const config = require('./config')
+const routes = require('./routes')
 
-const proxy = require('./routes/proxy')
+const port = process.env.PORT || config.port
 
 // error handler
 onerror(app)
 
 // middlewares
-app.use(
-  bodyparser({
-    enableTypes: ['json', 'form', 'text'],
-  })
-)
-app.use(json())
-app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
+app.use(bodyparser())
+  .use(json())
+  .use(logger())
+  .use(require('koa-static')(__dirname + '/public'))
+// .use(views(path.join(__dirname, '/views'), {
+//   options: { settings: { views: path.join(__dirname, 'views') } },
+//   map: { 'hbs': 'hbs' },
+//   extension: 'hbs'
+// }))
 
-app.use(
-  views(__dirname + '/views', {
-    extension: 'pug',
-  })
-)
+
+
+const render = views(__dirname + '/views', {
+  map: {
+    hbs: 'handlebars',
+    extension: 'hbs'
+  }
+})
+app.use(render)
+  .use(router.routes())
+  .use(router.allowedMethods())
 
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()
   await next()
   const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  console.log(`${ctx.method} ${ctx.url} - $ms`)
 })
 
-// 本地路由
-app.use(index.routes())
-app.use(users.routes())
-app.use(mapping.routes())
-app.use(document.routes())
-app.use(jam.routes())
-app.use(log.routes())
-app.use(example.routes())
-app.use(issue.routes())
-app.use(editor.routes())
+routes(router)
 
-// 代理请求
-app.use(proxy)
-
-// error-handling
-app.on('error', (err, ctx) => {
-  console.error('server error', err, ctx)
+app.on('error', function (err, ctx) {
+  console.log(err)
+  logger.error('server error', err, ctx)
 })
 
-module.exports = app
+module.exports = app.listen(config.port, () => {
+  console.log(`Listening on http://localhost:${config.port}`)
+})
