@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <script src="/js/jquery.min.js" defer="defer"></script>
+  <script src="/js/popper.min.js" defer="defer"></script>
+  <script src="/js/bootstrap.min.js" defer="defer"></script>
+  {{{#block "assets"}}}
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/images/torii-torii.png" width="30" height="30" class="d-inline-block align-top" alt=""
+        loading="lazy" />
+      Torii
+    </a>
+    <a class="navbar-brand" href="/"> Torii</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class={{active==="mapping" ?"nav-item active": "nav-item" }}>
+          <a class="nav-link" href="/mapping"> 映射</a>
+        </li>
+        <li class={{active==="issue" ?"nav-item active": "nav-item" }}>
+          <a class="nav-link" href="/issue"> 讨论</a>
+        </li>
+        <li class={{active==="document" ?"nav-item active": "nav-item" }}>
+          <a class="nav-link" href="/document"> 文档</a>
+        </li>
+        <li class={{active==="log" ?"nav-item active": "nav-item" }}>
+          <a class="nav-link" href="/log"> 日志</a>
+        </li>
+        <li class={{active==="editor" ?"nav-item active": "nav-item" }}>
+          <a class="nav-link" href="/editor"> 在线编辑</a>
+        </li>
+        <li class={{active==="more" ?"nav-item dropdown active ":" nav-item dropdown"}}>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"> 案例</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/examples/baidu"> 百度</a>
+            <a class="dropdown-item" href="#"> Another action</a>
+            <div class="dropdown-divider">
+              <a class="dropdown-item" href="#"> Something else here</a>
+            </div>
+          </div>
+        </li>
+        <li class={{active==="jam" ?"nav-item active": "nav-item" }}>
+          <a class="nav-link" href="/jam"> Jam (友站)</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {{{#block "content"}}}
+</body>

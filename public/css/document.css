@@ -1,0 +1,51 @@
+#outline {
+  position: absolute;
+  padding: 12px;
+  margin: 0;
+  top: 12px;
+  left: 12px;
+  width: 256px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  background-color: rgb(248, 249, 250);
+}
+#outline ol {
+  margin: 0;
+  padding: 12px;
+  list-style: none;
+}
+article {
+  padding: 12px 64px;
+  margin: 0 0 0 280px;
+  flex: 1;
+  height: calc(100vh - 56px);
+  overflow: auto;
+  border-left: 1px solid #ddd;
+}
+h1 {
+  font-size: 2.5em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.25em;
+}
+ol,
+ul {
+  padding: 0 20px;
+}
+code {
+  padding: 2px 4px;
+  color: #2c2c2c;
+  background-color: orange;
+  border-radius: 3px;
+}
+pre {
+  padding: 12px 20px;
+  background-color: #f1f1f1;
+  border-radius: 3px;
+}
+pre code {
+  background-color: #f1f1f1;
+}
