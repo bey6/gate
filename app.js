@@ -15,6 +15,10 @@ const log = require('./routes/log')
 const example = require('./routes/example')
 const issue = require('./routes/issue')
 const editor = require('./routes/editor')
+const assets = require('./routes/assets')
+
+
+
 
 const proxy = require('./routes/proxy')
 
@@ -47,6 +51,7 @@ app.use(async (ctx, next) => {
 
 // 本地路由
 app.use(index.routes())
+app.use(assets.routes())
 app.use(users.routes())
 app.use(mapping.routes())
 app.use(document.routes())

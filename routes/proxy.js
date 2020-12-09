@@ -1,5 +1,5 @@
 const axios = require('axios')
-const db = require('../db/nedb')
+const db = require('../service/nedb')
 
 /**
  * responseFormatter formate the response body to {code,msg,data}

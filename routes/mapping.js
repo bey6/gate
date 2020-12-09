@@ -1,5 +1,5 @@
 const router = require('koa-router')()
-const db = require('../db/nedb')
+const db = require('../service/nedb')
 
 router.prefix('/mapping')
 

@@ -1,0 +1,7 @@
+.file-list {
+  box-sizing: border-box;
+  margin: 12px;
+  padding: 12px;
+  list-style: none;
+  background-color: #f2f2f2;
+}

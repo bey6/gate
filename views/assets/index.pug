@@ -1,0 +1,13 @@
+extends ../layout
+
+block assets
+    link(rel="stylesheet", href="css/assets.css")
+
+block content
+    <section>
+        <ul class="file-list">
+            each file in files
+                li
+                    a(href='/'+file)= '/'+file
+        </ul>
+    </section>
