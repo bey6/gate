@@ -1,7 +1,42 @@
 .file-list {
-  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
   margin: 12px;
   padding: 12px;
   list-style: none;
-  background-color: #f2f2f2;
+}
+.file-list > li {
+  box-sizing: content-box;
+  position: relative;
+  margin: 12px;
+  padding: 8px;
+  width: 64px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.file-list > li:hover {
+  background-color: #f1f1f1;
+}
+.file-list > li > p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.btn-upload {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-upload__input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  opacity: 0;
 }

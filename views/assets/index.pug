@@ -1,13 +1,11 @@
-extends ../layout
+extends ./_layout.pug
 
-block assets
-    link(rel="stylesheet", href="css/assets.css")
-
-block content
+block append content
     <section>
-        <ul class="file-list">
+        <ul id="file-list" class="file-list">
             each file in files
-                li
-                    a(href='/'+file)= '/'+file
+                li(title=file.name)
+                    img(data-prefix= file.prefix  data-name= file.name data-type= file.type src=file.img, alt=file.name)
+                    p(data-prefix= file.prefix  data-name= file.name data-type= file.type)= file.name
         </ul>
     </section>

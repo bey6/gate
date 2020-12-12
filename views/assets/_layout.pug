@@ -1,0 +1,22 @@
+extends ../layout.pug
+
+block assets
+    link(rel="stylesheet", href="css/assets.css")
+    script(src="js/assets/index.js" defer="defer")
+
+block content
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            each fold in path
+                li.breadcrumb-item
+                    a(href='/'+fold.path)= fold.text
+            //- <li class="breadcrumb-item"><a href="/assets">assets</a></li>
+            //- <li class="breadcrumb-item"><a href="#"></a></li>
+            //- <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+    <div>
+        <button type="button" class="btn btn-warning btn-sm btn-upload">
+            <input type="file" class="btn-upload__input"/>上传资源
+        </button>
+    </div>
