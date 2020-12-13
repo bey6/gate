@@ -1,11 +1,25 @@
 extends layout
 
+block assets
+  link(rel="stylesheet", href="/css/index.css")
+  script(src="/js/index.js" defer="defer")
+
 block content
-  <article style='text-align:center'>
-    <div class='jumbotron jumbotron-fluid'>
+  <div style='text-align:center'>
+    <div id="banners" class='jumbotron jumbotron-fluid' style="background-color:#ffc235">
       <div class='container'>
         h1= title
         <img src='img/torii-torii.png' class='img-fluid' alt='Responsive image'/>
+        <button id="close">close</button>
       </div>
     </div>
-  </article>
+    <ol id="app-list">
+      each app in apps
+        li
+          a(href= app.url)
+            img(src=app.logo, alt="logo", width="32", height="32")
+            span= app.name
+      li(style="padding:8px 12px")
+        img(src="img/plus.png", alt="logo", width="32", height="32")
+    </ol>
+  </div>

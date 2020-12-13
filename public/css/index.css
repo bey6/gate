@@ -1,0 +1,47 @@
+#banners {
+  position: relative;
+}
+#close {
+  padding: 4px 8px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.8em;
+  background-color: #fff0;
+  border: none;
+  border-radius: 3px;
+}
+#app-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 12px auto;
+  width: 800px;
+}
+#app-list > li {
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 12px;
+  width: 128px;
+  border-radius: 3px;
+  border: 1px solid #f1f1f1;
+  background-color: #f1f1f1;
+}
+#app-list > li:hover {
+  border: 1px solid #ffc235;
+}
+#app-list > li > a {
+  display: flex;
+  padding: 8px 12px;
+}
+#app-list > li > a > img {
+  border-radius: 3px;
+}
+#app-list > li > a > span {
+  flex: 1;
+  padding: 4px;
+  color: #2c2c2c;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

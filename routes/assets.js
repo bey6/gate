@@ -45,17 +45,16 @@ router.get('/', async (ctx, next) => {
             if (idx === 0) {
                 return {
                     path: '/assets',
-                    text: p
+                    text: 'assets'
                 }
             } else {
                 return {
-                    path: arrPath.slice(0, idx).join('/'),
+                    path: '/assets?path=' + arrPath.slice(0, idx + 1).join('/'),
                     text: p
                 }
             }
         })
         console.log(arrPath)
-        arrPath.shift()
         await ctx.render('assets/index.pug', {
             title: 'assets',
             active: 'assets',
