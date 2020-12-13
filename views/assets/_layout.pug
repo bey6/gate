@@ -5,18 +5,19 @@ block assets
     script(src="js/assets/index.js" defer="defer")
 
 block content
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            each fold in path
-                li.breadcrumb-item
-                    a(href='/'+fold.path)= fold.text
-            //- <li class="breadcrumb-item"><a href="/assets">assets</a></li>
-            //- <li class="breadcrumb-item"><a href="#"></a></li>
-            //- <li class="breadcrumb-item active" aria-current="page">Data</li>
+    <nav aria-label="breadcrumb" style="margin: 8px">
+        <ol class="breadcrumb" style="padding: 4px 12px;margin:0;background-color:#f8f9fa">
+            each fold, idx in path
+                li.breadcrumb-item(class=path.length-1===idx?'active':'')
+                    case idx
+                        when path.length-1
+                            =fold.text
+                        default 
+                            a(href=fold.path)= fold.text
         </ol>
     </nav>
-    <div>
-        <button type="button" class="btn btn-warning btn-sm btn-upload">
-            <input type="file" class="btn-upload__input"/>上传资源
-        </button>
-    </div>
+    <button type="button" class="btn btn-upload">
+        img#img-plus(for="btn-upload", src="img/plus.png", alt="upload", width="32", height="32")
+        <input id="btn-input-upload" type="file" class="btn-upload__input"/>
+        
+    </button>

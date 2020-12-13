@@ -13,4 +13,7 @@ $(function () {
         if (type === 'folder') window.location = `/assets?path=${pref + path}`
         else $().toast('copied')
     })
+    $('#img-plus').click(() => {
+        $('#btn-input-upload').click()
+    })
 })
