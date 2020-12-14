@@ -4,7 +4,7 @@ router.get('/', async (ctx, next) => {
   let apps = [
     {
       name: '首页',
-      url: 'http://localhost:3000/'
+      url: 'http://xhdev.docimaxvip.com:6611/'
     },
     {
       name: '科研',
@@ -24,7 +24,7 @@ router.get('/', async (ctx, next) => {
     },
     {
       name: '质控',
-      url: 'http://localhost:3000/'
+      url: 'http://xhdev.docimaxvip.com:6684/'
     },
     {
       name: '配置',
@@ -36,15 +36,20 @@ router.get('/', async (ctx, next) => {
     },
     {
       name: '病案',
-      url: 'http://localhost:3000/'
+      url: 'http://xhdev.docimaxvip.com:6640'
     },
+    {
+      name: 'gitlab',
+      url: 'http://git.docimaxvip.com/'
+    }
   ].map(app => ({
     ...app,
     logo: app.url.slice(app.url.length - 1) === '/' ? app.url + 'favicon.ico' : app.url + '/favicon.ico'
   }))
 
   await ctx.render('index', {
-    title: 'Welcome To Torii!',
+    title: 'Torii',
+    bannerTitle: 'Welcome To Torii!',
     apps: apps
   })
 })

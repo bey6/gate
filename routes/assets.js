@@ -29,7 +29,7 @@ router.get('/', async (ctx, next) => {
                 img = 'img/folder.png'
                 type = 'folder'
             } else if (isImg(ext)) img = pref + '/' + file
-            else img = extMapping[ext] ?? 'img/file.png'
+            else img = extMapping[ext] ? extMapping[ext] : 'img/file.png'
 
             assets.push({
                 name,

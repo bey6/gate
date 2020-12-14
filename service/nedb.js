@@ -1,7 +1,8 @@
 const DataStore = require('nedb')
+const path = require('path')
 
 const db = new DataStore({
-  filename: '../db/nedb.db',
+  filename: path.join(__dirname, '../db/nedb.db'), // 建议写绝对路径，相对路径有时候会出现找不到文件存在哪的问题
   autoload: true,
 })
 
