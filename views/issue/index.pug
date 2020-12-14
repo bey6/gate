@@ -5,9 +5,38 @@ block assets
     script(src="/js/issue.js" defer='defer')
 
 block content
-    section.issue-list
-        ul.list-group
+    .issues-page
+        ol.issue-list
             each issue in issues
-                li.list-group-item(class=issue.class style='padding: 8px 20px')
-                    span=issue.desc
-                    button.check-btn(type='button' class=issue.done?'check-btn--checked':'')
+                li(style='padding: 4px 8px')
+                    span=issue.desc +' - '
+                    span.alias=issue.alias
+                    span.date=issue.date
+                    //- class=issue.class
+                    //- span=issue.desc
+                    //- button.check-btn(type='button' class=issue.done?'check-btn--checked':'')
+        
+        div(class="comment-panel")
+            form(action="/issue", method="post")
+                .form-group.row
+                    label(for="alias", class="col-sm-2 col-form-label col-form-label-sm") 昵称
+                    .col-sm-10
+                        input#alias(type="text", name="alias", class="form-control form-control-sm")
+                .form-group.row
+                    label(for="comment", class="col-sm-2 col-form-label col-form-label-sm") 评论
+                    .col-sm-10
+                        textarea#comment(name="comment", cols="30", rows="10", class="form-control form-control-sm")
+                .form-group.row
+                    label(for="level", class="col-sm-2 col-form-label-sm") 等级
+                    .col-sm-10
+                        select#level(class="form-control form-control-sm", name="level")
+                            option(value="1") lv1
+                            option(value="2") lv2
+                            option(value="3" selected) lv3
+                            option(value="4") lv4
+                .form-group(style="text-align:right;margin-bottom: 0")
+                    button(type="submit" class="btn btn-warning btn-sm")
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                            <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
+                        </svg> 提交

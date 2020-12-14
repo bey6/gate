@@ -10,9 +10,9 @@ router.post('/target', async (ctx, next) => {
     else if (!ctx.request.body.version) ctx.body = 'Version cannot be empty'
     else {
       let res = await db.insert({
+        _type: 'mapping',
         alias: ctx.request.body.alias,
         origin: ctx.request.body.origin,
-        // action: ctx.request.body.action,
         version: ctx.request.body.version,
       })
       ctx.redirect('/mapping')
@@ -24,7 +24,7 @@ router.post('/target', async (ctx, next) => {
 
 router.get('/', async (ctx, next) => {
   try {
-    let res = await db.queryAll()
+    let res = await db.queryAll({ _type: 'mapping' })
     await ctx.render('mapping', {
       title: 'mapping',
       active: 'mapping',

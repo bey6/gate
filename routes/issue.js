@@ -1,49 +1,40 @@
 const router = require('koa-router')()
+const db = require('../service/nedb')
+const moment = require('moment')
 
 router.prefix('/issue')
 
 router.get('/', async (ctx, next) => {
-  await ctx.render('issue/index.pug', {
-    title: '计划',
-    active: 'issue',
-    issues: [
-      {
-        key: 0,
-        desc: '支持从配置服务读取默认的映射信息',
-        level: 1,
-        class: 'list-group-item-danger',
-        done: false,
-      },
-      {
-        key: 1,
-        desc: '映射页面支持下载客户端配置文件功能',
-        level: 2,
-        class: 'list-group-item-warning',
-        done: false,
-      },
-      {
-        key: 2,
-        desc: '支持在线编辑文档、日志功能',
-        level: 3,
-        class: 'list-group-item-info',
-        done: false,
-      },
-      {
-        key: 3,
-        desc: '一般优先级',
-        level: 4,
-        class: '',
-        done: false,
-      },
-      {
-        key: 4,
-        desc: '完成的项目',
-        level: 4,
-        class: 'list-group-item-dark',
-        done: true,
-      },
-    ],
-  })
+  try {
+    let res = await db.queryAll({ _type: 'issues' })
+    await ctx.render('issue/index.pug', {
+      title: '计划',
+      active: 'issue',
+      issues: res.sort((x, y) => x.date.localeCompare(y.date))
+    })
+  } catch (error) {
+    ctx.body = error
+  }
+})
+
+router.post('/', async (ctx, next) => {
+  try {
+    if (!ctx.request.body.alias) ctx.body = 'Alias cannot be empty'
+    else if (!ctx.request.body.comment) ctx.body = 'Origin cannot be empty'
+
+    let res = await db.insert({
+      _type: 'issues',
+      alias: ctx.request.body.alias,
+      desc: ctx.request.body.comment,
+      level: 1,
+      class: 'list-group-item-danger',
+      done: false,
+      date: moment(new Date()).format('YYYY-MM-DD hh:mm:ss'),
+    })
+    ctx.redirect('/issue')
+  } catch (error) {
+    ctx.body = error
+  }
 })
 
 module.exports = router
