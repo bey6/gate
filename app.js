@@ -16,8 +16,8 @@ const example = require('./routes/example')
 const issue = require('./routes/issue')
 const editor = require('./routes/editor')
 const assets = require('./routes/assets')
-
-
+const github = require('./routes/github')
+const application = require('./routes/application')
 
 
 const proxy = require('./routes/proxy')
@@ -27,30 +27,31 @@ onerror(app)
 
 // middlewares
 app.use(
-  bodyparser({
-    enableTypes: ['json', 'form', 'text'],
-  })
+    bodyparser({
+        enableTypes: ['json', 'form', 'text'],
+    })
 )
 app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 
 app.use(
-  views(__dirname + '/views', {
-    extension: 'pug',
-  })
+    views(__dirname + '/views', {
+        extension: 'pug',
+    })
 )
 
 // logger
 app.use(async (ctx, next) => {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+    const start = new Date()
+    await next()
+    const ms = new Date() - start
+    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
 // 本地路由
 app.use(index.routes())
+app.use(application.routes())
 app.use(assets.routes())
 app.use(users.routes())
 app.use(mapping.routes())
@@ -60,13 +61,13 @@ app.use(log.routes())
 app.use(example.routes())
 app.use(issue.routes())
 app.use(editor.routes())
-
+app.use(github.routes())
 // 代理请求
 app.use(proxy)
 
 // error-handling
 app.on('error', (err, ctx) => {
-  console.error('server error', err, ctx)
+    console.error('server error', err, ctx)
 })
 
 module.exports = app

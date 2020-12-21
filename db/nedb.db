@@ -2,3 +2,9 @@
 {"_type":"issues","alias":"贝","desc":"测试时间","level":1,"class":"list-group-item-danger","done":false,"date":"2020-12-15 12:17:41","_id":"FbEyMdkK5zug3uhp"}
 {"_type":"issues","alias":"贝","desc":"我想要一个资源重命名的功能","level":1,"class":"list-group-item-danger","done":false,"date":"2020-12-15","_id":"OdciX55oMwLFiWde"}
 {"_type":"mapping","alias":"baidu","origin":"https://image.baidu.com","version":"V1","_id":"u2NBlsALbzDlSsrr"}
+{"_type":"application","name":"百度","url":"https://www.baidu.com","_id":"dIaq9K5EGUwESdZi"}
+{"_type":"application","name":"Torii","url":"http://localhost:3000/","_id":"CYBnOWvHxtSnEMoa"}
+{"_type":"application","name":"Github","url":"https://github.com/","_id":"BM5pBnYJdapYztBx"}
+{"_type":"application","name":"ES Guide","url":"https://www.elastic.co/guide/index.html","_id":"XvyL331YLkdDPiHA"}
+{"_type":"issues","alias":"页面太丑了, 美化以下","desc":"","level":1,"class":"list-group-item-danger","done":false,"date":"2020-12-22 12:06:39","_id":"iFj5N3bhaLeF5bjc"}
+{"_type":"issues","alias":"Tom","desc":"I am looking for a hero, i think you are!","level":1,"class":"list-group-item-danger","done":false,"date":"2020-12-22 12:07:26","_id":"rkSWssk83nsaR6mg"}

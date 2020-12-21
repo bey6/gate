@@ -1,5 +1,5 @@
 $(function () {
-  $('#btnSave').click(function () {
-    $('#formTarget').submit()
-  })
+    $('#btn-save').click(function () {
+        $('#form-target').submit()
+    })
 })
