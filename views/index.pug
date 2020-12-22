@@ -32,17 +32,17 @@ block content
     <div style='text-align:center'>
         <div id="banners" class='jumbotron jumbotron-fluid' style="background-color:#ffc235">
             <div class='container'>
-                h1= bannerTitle
+                h1=bannerTitle
                 <img src='img/torii-torii.png' class='img-fluid' alt='Responsive image'/>
                 <button id="close">close</button>
             </div>
         </div>
         <ol id="app-list">
         each app in apps
-            li(title= app.name)
-                a(href= app.url)
-                    img(src=app.logo, alt="logo", width="32", height="32")
-                    span= app.name
+            li(title=app.name)
+                a(href= app.url, target='_block')
+                    img(src=app.logo, alt="logo", width="32", height="32", onerror="this.src='/img/app.png';this.onerror=null")
+                    span=app.name
         li(style="padding:8px 12px", data-toggle='modal', data-target='#dialog')
             img(src="img/plus.png", alt="logo", width="32", height="32")
         </ol>
